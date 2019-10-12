@@ -3,7 +3,7 @@ import re
 f = open('message_1.json', 'r')
 conversation = json.load(f)
 print(conversation['participants'])
-messages = conversation['messages']   #lista
+messages = conversation['messages']   
 zajac_messages = list(filter(lambda x: x['sender_name'] == conversation['participants'][0]['name'], messages))
 zajac_messages_filtered = list(filter(lambda x: True if 'content' in x else False, messages))
 messages_content = list(map(lambda x: x['content'], zajac_messages_filtered))

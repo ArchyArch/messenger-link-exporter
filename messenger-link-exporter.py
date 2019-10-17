@@ -19,5 +19,10 @@ list_of_url = list(map(lambda x: re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.
 list_of_url_without_empty_lists = list(filter(lambda x: x != [], list_of_url))
 
 flat_list = [item for sublist in list_of_url_without_empty_lists for item in sublist]
+list_of_links = open("list_of_links.txt", 'w')
+
 for item in flat_list:
-    print(item)
+    list_of_links.write(item)
+    list_of_links.write("\n")
+
+list_of_links.close()

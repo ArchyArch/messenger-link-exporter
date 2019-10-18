@@ -2,11 +2,12 @@
 
 A simple script in Python that exports links from Messenger conversations.
 
-<h3>How to use it?</h3>
+### How to use it?
 
 1. Export your facebook messages from [here](https://www.facebook.com/dyi).
-2. Download your Messenger data.
+2. Download your Messenger data and unpack it.
 3. Choose one sender's .json file with messages (it's usually named `messages_1.json`).
-4. Place the file from step 3 in this same directory as the script.
-5. Run the script in terminal - `python messenger-link-exporter.py`
-6. It gives you one link by one printed on the screen, so you can copy them and paste to any editor.
+4. Run the script in terminal - `python messenger-link-exporter.py <path to conversation JSON file>` (if you don't provide a path then `messages_1.json` will be opened).
+5. A new file named `list_of_links.txt` will be created.
+
+Enjoy your links!

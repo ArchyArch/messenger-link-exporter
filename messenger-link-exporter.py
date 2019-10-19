@@ -26,23 +26,22 @@ except IndexError:
 
 f = open(path_to_json_file, 'r')
 conversation = json.load(f)
-messages = conversation['messages']
 
 while True:
     choice, participants = show_participant_selection_menu(conversation)
     try:
+        messages = conversation['messages']
         if choice == "e" or choice == "E":
-            sender_messages_filtered = list(filter(lambda x: True if 'content' in x else False, messages))
+            pass
         else:
             choice = int(choice)
             participant_name = participants[choice]['name']
-            sender_messages = list(filter(lambda x: x['sender_name'] == participant_name, messages))
-            sender_messages_filtered = list(filter(lambda x: True if 'content' in x else False, sender_messages))
+            messages = list(filter(lambda x: x['sender_name'] == participant_name, messages))
 
+        sender_messages_filtered = list(filter(lambda x: True if 'content' in x else False, messages))
         messages_content = list(map(lambda x: x['content'], sender_messages_filtered))
         list_of_url = list(map(lambda x: re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', x), messages_content))
         list_of_url_without_empty_lists = list(filter(lambda x: x != [], list_of_url))
-
         flat_list = [item for sublist in list_of_url_without_empty_lists for item in sublist]
         list_of_links = open("list_of_links.txt", 'w')
 
